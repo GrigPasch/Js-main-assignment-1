@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap');
+body {
+    text-align: center;
+    background: rgb(7,0,133);
+    background: -moz-radial-gradient(circle, rgba(7,0,133,0.74) 5%, rgba(0,212,255,0.7354988399071926) 75%, rgba(108,241,208,1) 95%);
+    background: -webkit-radial-gradient(circle, rgba(7,0,133,0.74) 5%, rgba(0,212,255,0.7354988399071926) 75%, rgba(108,241,208,1) 95%);
+    background: radial-gradient(circle, rgba(7,0,133,0.74) 5%, rgba(0,212,255,0.7354988399071926) 75%, rgba(108,241,208,1) 95%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#070085",endColorstr="#6cf1d0",GradientType=1);
+}
+
+h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 7rem;
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: -5px;
+}
+
+div.scoreDisplay{
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+}
+
+button {
+    font-family: 'Caveat', cursive;
+    padding: 0.5em;
+    width: 8em;
+    font-size: 2em;
+}
+
+button#rock{
+    background-image: url('./assets/rock.png');
+}
+
+button#paper{
+    background-image: url('./assets/paper.png');
+}
+
+button#scissors{
+    background-image: url('./assets/scissors.png');
+}
+
+p.computerMessage, p.computerChose, 
+p.playerChose, p.playerMessage, 
+p.tieMessage{
+    font-family: 'Caveat', cursive;
+    font-size: 1.5em;
+}

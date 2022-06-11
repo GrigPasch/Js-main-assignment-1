@@ -1,59 +1,99 @@
-let numberWon = 0; 
-let noImpact = 0; 
-let numberLost = 0; 
-let score = [numberWon, noImpact, numberLost];
-let choices = ["Rock", "Paper", "Scissors"]; 
+let computerMessages = document.querySelector('[data-computerChoice]');
+let playerOption = document.querySelector('[data-playerChoice]');
+let tieMessages = document.querySelector('[data-tie]');
+let playerScore = document.querySelector('[data-playerScore]');
+playerScoreCount = 0;
+let computerScore = document.querySelector('[data-AIScore]');
+computerScoreCount = 0;
 
-let userPlay = function(){
-    let playerChoice = window.prompt("Please decide between rock, paper or scissors");
-    console.log(playerChoice);
-
-if ((playerChoice.toLowerCase() !== "Rock") ||
-    (playerChoice.toLowerCase() !== "Paper") ||
-    (playerChoice.toLowerCase() !== "Scissors")){
-    
-        return; 
+function updatePlayerScore(){
+    playerScore.textContent = ++playerScoreCount;
 }
-playerChoice = playerChoice.toLowerCase(); 
 
-
-if (playerChoice.toLowerCase() === computerChoice){
-    noImpact++; 
-    window.alert("Nothing is happening. Must be a tie"); 
-}else if ((playerChoice.toLowerCase() === "Rock" && computerChoice === "Scissors") ||
-          (playerChoice.toLowerCase() === "Paper" && computerChoice === "Rock") ||
-          (playerChoice.toLowerCase() === "Scissors" && computerChoice === "Paper")){
-    
-            numberWon++;
-            window.alert("Point for humanity");
-}else if((playerChoice.toLowerCase() === "Rock" && computerChoice === "Paper") ||
-         (playerChoice.toLowerCase() === "Paper" && computerChoice === "Scissors") ||
-         (playerChoice.toLowerCase() === "Scissors" && computerChoice === "Rock")){
-    
-            numberLost++;
-            window.alert("AI takes the win."); 
+function updateComputerScore(){
+    computerScore.textContent = ++computerScoreCount;
 }
-console.log(score[numberWon, noImpact, numberLost]);
 
-window.alert(
-   "Scoreboard:\nWins: " + numberWon + "\nLosses: " + numberLost + "\nTies: " + noImpact 
-);
+function computerPlay(){
+    const computerPlay = ["Rock", "Paper", "Scissors"];
+    let computerChoice = computerPlay[Math.floor(Math.random()*computerPlay.length)];
+    computerMessages.textContent = computerChoice;
 
-let replay = window.alert("Would You Like To Play Again?"); 
-
-if(replay = true) {
-    userPlay();
-    computerPlay();
+    return computerChoice;
 }
-};
 
-let computerPlay = function(){
-    let index = Math.floor(Math.random() * choices.length); 
-    let computerChoice = choices[index]; 
+function playRound() {
+    const rockOption = document.querySelector('#rock');
+    rockOption.addEventListener('click', function rockButton(){
+        playerOption.textContent = "Rock";
+        const computerSelect = computerPlay();
 
-    window.alert("The computer picked " + computerChoice);
-    console.log(computerChoice);
-};
+        if(computerMessages.textContent == "Rock" && playerOption.textContent == "Rock"){
+                tieMessages.textContent = "Uh oh! You and the Computer got Rock! Try again!"
+        }
+        if(computerMessages.textContent == "Paper" && playerOption.textContent == "Rock"){
+                updateComputerScore();
+                tieMessages.textContent = "Computer wins - try again!"
+        }
+        if(computerMessages.textContent == "Scissors" && playerOption.textContent == "Rock"){
+                updatePlayerScore();
+                tieMessages.textContent = "Player wins - well done!"
+        }
+    });
+    const paperOption = document.querySelector('#paper');
 
-userPlay();
-computerPlay();
+    paperOption.addEventListener('click', function paperButton(){
+        playerOption.textContent = "Paper";
+        const computerSelect = computerPlay();
+
+        if(computerMessages.textContent == "Paper" && playerOption.textContent == "Paper"){
+                tieMessages.textContent = "Uh oh! You and the Computer got Paper! Try again!"
+        }
+        if(computerMessages.textContent == "Rock" && playerOption.textContent == "Paper"){
+                updatePlayerScore();
+                tieMessages.textContent = "Player wins - well done!"
+        }
+        if(computerMessages.textContent == "Scissors" && playerOption.textContent == "Paper"){
+                updateComputerScore();
+                tieMessages.textContent = "Computer wins - try again!"
+        }   
+    });
+     const scissorsOption = document.querySelector('#scissors');
+
+     scissorsOption.addEventListener('click', function scissorsButton(){
+         playerOption.textContent = "Scissors";
+         const computerSelect = computerPlay();
+ 
+         if(computerMessages.textContent == "Scissors" && playerOption.textContent == "Scissors"){
+                tieMessages.textContent = "Uh oh! You and the Computer got Scissors! Try again!"
+         }
+         if(computerMessages.textContent == "Rock" && playerOption.textContent == "Scissors"){
+                updatePlayerScore();
+                tieMessages.textContent = "Player wins - well done!"
+        }
+        if(computerMessages.textContent == "Paper" && playerOption.textContent == "Scissors"){
+                updateComputerScore();
+                tieMessages.textContent = "Player wins - well done!"
+        }
+        winnerDeclaration();
+     });
+
+    }
+
+    function winnerDeclaration(){
+        if(computerScore.textContent == "5"){
+                playerScoreCount = 0;
+                computerScoreCount = 0;
+                computerScore.textContent = computerScoreCount;
+                playerScore.textContent = playerScoreCount;
+                tieMessages.textContent = "You lost to the Computer - try again!"
+        } 
+        if(playerScore.textContent == "5"){
+                playerScoreCount = 0;
+                computerScoreCount = 0;
+                computerScore.textContent = computerScoreCount;
+                playerScore.textContent = playerScoreCount;
+                tieMessages.textContent = "You won - well done!"
+        }
+    }
+playRound();

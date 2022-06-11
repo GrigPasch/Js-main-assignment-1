@@ -1,12 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="./functions/game.js"></script>
-    <title></title>
-</head>
-<body>
-</body>
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Rock Papers Scissors</title>
+        <link rel="stylesheet" href="main.css">
+        <script src="./functions/game.js" defer></script>
+    </head>
+    <body>
+        <h1>Rock Paper Scissors</h1>
+        <div class="scoreDisplay">
+            <p>Player Score: </p>
+            <p data-playerScore class="playerScore">0</p>
+            <p>Computer Score: </p>
+            <p data-AIScore class="computerScore">0</p>
+        </div>
+        <h2>Pick your Choice!</h2>
+        <div class="buttons">
+            <button id="rock"> <b>Rock</b> </button>
+            <button id="paper"> <b>Paper</b> </button>
+            <button id="scissors"> <b>Scissors</b> </button>
+        </div>
+        <p class="computerMessage">Computer Chose:</p>
+        <p data-computerChoice class="computerChose"></p>
+        <p class ="playerChose">Player Chose:</p>
+        <p data-playerChoice class="playerMessage"></p>
+        <p data-tie class="tieMessage"></p>
+    </body>
 </html>
