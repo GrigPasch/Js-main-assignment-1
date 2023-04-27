@@ -96,4 +96,5 @@ function playRound() {
                 tieMessages.textContent = "You won - well done!"
         }
     }
-playRound();
+
+    playRound();
